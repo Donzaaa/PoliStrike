@@ -47,24 +47,6 @@ export function getCurrentGame() {
   return currentGame;
 }
 
-export function setupCursor() {
-  document.body.style.cursor = 'none'; // Hide default cursor ONLY if JS runs
-  
-  document.addEventListener('mousemove', e => {
-    const c = document.getElementById('cursor');
-    const r = document.getElementById('cursor-ring');
-    if (c && r) {
-      c.style.left = e.clientX + 'px';
-      c.style.top = e.clientY + 'px';
-      setTimeout(() => {
-        if (r) {
-          r.style.left = e.clientX + 'px';
-          r.style.top = e.clientY + 'px';
-        }
-      }, 60);
-    }
-  });
-}
 
 export function initTicker() {
   const msgs = [

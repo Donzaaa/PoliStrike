@@ -1,7 +1,7 @@
 import { checkSession, loginWithGoogle, loginAsGuest } from './auth.js';
 import { initState, updateBalance, getState, resetGameCompletely } from './state.js';
 import { checkDailyBonus, claimDailyBonus, checkLoan, takeLoan, getNetWorth } from './economy.js';
-import { updateGlobalUI, setupCursor, initTicker, setupModals, openModal, closeModal, setCurrentGame } from './ui.js';
+import { updateGlobalUI, initTicker, setupModals, openModal, closeModal, setCurrentGame } from './ui.js';
 import { initBlackjack } from './games/blackjack.js';
 import { initRoulette, buildRWWheel, buildNumGrid } from './games/roulette.js';
 import { initSlots } from './games/slots.js';
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   
   updateGlobalUI();
-  setupCursor();
+
   initTicker();
   setupModals();
   

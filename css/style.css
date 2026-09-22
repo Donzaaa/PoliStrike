@@ -17,6 +17,11 @@
   --muted: #666;
   --text: #F0F0F0;
   --btn-text: #000;
+  --glass-bg: rgba(12, 12, 12, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --input-bg: rgba(0, 0, 0, 0.4);
+  --input-border: rgba(255, 255, 255, 0.1);
+  --border-light: rgba(255, 255, 255, 0.08);
 }
 
 [data-theme="light"] {
@@ -32,6 +37,11 @@
   --muted: #64748B;
   --text: #0F172A;
   --btn-text: #FFFFFF;
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --input-bg: rgba(255, 255, 255, 0.8);
+  --input-border: rgba(0, 0, 0, 0.2);
+  --border-light: rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="midnight"] {
@@ -47,6 +57,11 @@
   --muted: #737373;
   --text: #F5F5F5;
   --btn-text: #FFFFFF;
+  --glass-bg: rgba(5, 5, 5, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --input-bg: rgba(0, 0, 0, 0.6);
+  --input-border: rgba(255, 255, 255, 0.05);
+  --border-light: rgba(255, 255, 255, 0.04);
 }
 
 html {
@@ -60,39 +75,7 @@ body {
   overflow-x: hidden;
 }
 
-/* CURSOR */
-#cursor {
-  position: fixed;
-  top: -100px;
-  left: -100px;
-  width: 12px;
-  height: 12px;
-  background: var(--volt);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99999;
-  transform: translate(-50%, -50%);
-  transition: width .2s, height .2s, opacity .2s;
-  mix-blend-mode: difference
-}
 
-#cursor-ring {
-  position: fixed;
-  top: -100px;
-  left: -100px;
-  width: 36px;
-  height: 36px;
-  border: 1.5px solid rgba(204, 255, 0, 0.5);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99999;
-  transform: translate(-50%, -50%);
-  transition: transform .12s ease, width .2s, height .2s
-}
-
-body:hover #cursor {
-  opacity: 1
-}
 
 /* BG GRID */
 body::before {
@@ -605,22 +588,30 @@ nav {
 /* GAME MODALS */
 .overlay {
   position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  z-index: 500;
-  display: none;
-  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
   justify-content: center;
-  backdrop-filter: blur(8px);
-  padding: 1rem;
-  padding-bottom: 90px;
+  padding: 2rem 1rem 90px;
+  overflow-y: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
 }
 
 .overlay.open {
-  display: flex
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .modal {
+  margin: auto;
   background: var(--dark2);
   border: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
   width: 100%;

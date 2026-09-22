@@ -2,16 +2,16 @@
 
 /* Glassmorphism per i modali */
 .glass-modal {
-  background: rgba(12, 12, 12, 0.7) !important;
+  background: var(--glass-bg) !important;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid var(--glass-border) !important;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
   border-radius: 12px;
 }
 .glass-modal .modal-header {
   background: transparent !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--border-light);
 }
 .glass-modal h2 {
   background: linear-gradient(90deg, #fff, #aaa);
@@ -33,9 +33,9 @@
 .premium-input {
   width: 100%; 
   padding: 1rem; 
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.1); 
-  color: #fff; 
+  background: var(--input-bg);
+  border: 1px solid var(--input-border); 
+  color: var(--text); 
   font-size: 1rem; 
   border-radius: 8px;
   transition: border-color 0.3s, box-shadow 0.3s;
@@ -48,7 +48,7 @@
 }
 
 /* Tabs */
-.tabs { display: flex; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 1rem; }
+.tabs { display: flex; border-bottom: 1px solid var(--border-light); margin-bottom: 1rem; }
 .tab-btn { flex: 1; padding: 1rem; background: transparent; border: none; color: var(--muted); font-family: 'Barlow Condensed'; font-size: 1.1rem; letter-spacing: 1px; cursor: pointer; transition: color 0.3s, border-bottom 0.3s, text-shadow 0.3s; border-bottom: 2px solid transparent; }
 .tab-btn:hover { color: #fff; text-shadow: 0 0 8px rgba(255,255,255,0.3); }
 .tab-btn.active { color: var(--volt); border-bottom-color: var(--volt); text-shadow: 0 0 12px rgba(204,255,0,0.4); }
