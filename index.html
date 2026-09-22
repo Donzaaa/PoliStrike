@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Aggiunta Content Security Policy -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://flagcdn.com https://*.supabase.co; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://flagcdn.com; connect-src 'self' https://*.supabase.co;">
+<title>POLI STRIKE</title>
+
+<meta name="theme-color" content="#CCFF00">
+<link rel="icon" type="image/jpeg" href="favicon.jpg">
+<link rel="manifest" href="manifest.json">
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner" id="ticker-inner"></div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div>
+    <div class="logo-text brand-name">POLI STRIKE</div>
+    <div class="logo-sub" data-i18n="brand_sub">Casino Digitale</div>
+  </div>
+  <nav>
+    <button aria-label="Gioca a Blackjack" class="nav-link active" onclick="openGame('bj')" data-i18n="nav_blackjack">Blackjack</button>
+    <button aria-label="Gioca alla Roulette" class="nav-link" onclick="openGame('rw')" data-i18n="nav_roulette">Roulette</button>
+    <button aria-label="Gioca alle Slot Machine" class="nav-link" onclick="openGame('sl')" data-i18n="nav_slots">Slot Machine</button>
+    <button aria-label="Apri le Casse" class="nav-link" onclick="openGame('cs')" style="color:#E040FB" data-i18n="nav_crates">Casse</button>
+    <button aria-label="Vedi Classifica" class="nav-link" id="nav-leaderboard" onclick="window.openLeaderboard()" style="color:var(--volt)" data-i18n="nav_leaderboard">Classifica</button>
+    <button aria-label="Apri Impostazioni" class="nav-link" id="nav-settings" onclick="window.openSettings()" data-i18n="nav_settings">Impostazioni</button>
+    <button aria-label="Apri Profilo" class="nav-link" id="nav-profile" onclick="window.openProfile()" data-i18n="nav_profile">Profilo</button>
+    <button aria-label="Cambia Lingua" class="nav-link" id="lang-toggle-btn" onclick="window.toggleLang()" style="margin-left: 1rem; border: none; background: transparent; padding: 0; display: flex; align-items: center; justify-content: center;"><img src="https://flagcdn.com/w40/gb.png" width="32" alt="Cambia Lingua" style="border-radius:4px"></button>
+  </nav>
+</header>
+
+<!-- HERO -->
+<main>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-eyebrow"><span class="eyebrow-line"></span><span data-i18n="hero_eyebrow">Il Tuo Casino Online</span><span class="eyebrow-line"></span></div>
+  <h1 class="hero-title">
+    <span class="line1" id="brand-title-line1">POLI</span>
+    <span class="line2" id="brand-title-line2">STRIKE</span>
+  </h1>
+  <p class="hero-sub" id="hero-sub-text" data-i18n="hero_sub">Blackjack · Roulette · Slot Machine · Casse Premi · Solo Per Divertimento</p>
+  <div class="hero-btns">
+    <button class="btn-primary" onclick="openGame('bj')" data-i18n="hero_btn_play">Inizia a Giocare</button>
+    <button class="btn-outline" onclick="document.getElementById('games-section').scrollIntoView()" data-i18n="hero_btn_discover">Scopri i Giochi</button>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label" data-i18n="stat_games">Giochi Disponibili</div></div>
+  <div class="stat"><div class="stat-num">1.000 CFU</div><div class="stat-label" data-i18n="stat_credit">Credito Iniziale</div></div>
+  <div class="stat"><div class="stat-num">36:1</div><div class="stat-label" data-i18n="stat_max_payout">Max Pagamento</div></div>
+  <div class="stat"><div class="stat-num">100%</div><div class="stat-label" data-i18n="hud_balance">SALDO</div></div>
+</div>
+
+<!-- GAMES -->
+<section class="section" id="games-section">
+  <div class="section-header">
+    <div class="section-tag" data-i18n="section_tag">I Nostri Giochi</div>
+    <h2 class="section-title" data-i18n="section_title">SCEGLI IL <em>TUO GIOCO</em></h2>
+  </div>
+  <div class="games-grid">
+    <div class="game-card bj" onclick="openGame('bj')">
+      <div class="game-number">01</div>
+      <span class="game-icon">🃏</span>
+      <div class="game-name" data-i18n="card_bj">Blackjack</div>
+      <p class="game-desc" data-i18n="desc_bj">Il classico gioco da tavolo. Batti il banco senza sballare il 21. Blackjack naturale paga 3:2.</p>
+      <span class="game-tag" data-i18n="tag_bj">Fino a 2.5×</span>
+      <button class="game-btn" data-i18n="btn_arrow">Gioca →</button>
+    </div>
+    <div class="game-card rw" onclick="openGame('rw')">
+      <div class="game-number">02</div>
+      <span class="game-icon">🎡</span>
+      <div class="game-name" data-i18n="card_rw">Roulette</div>
+      <p class="game-desc" data-i18n="desc_rw">La regina dei casinò. Punta su numeri, colori o gruppi. La palla decide il tuo destino.</p>
+      <span class="game-tag" style="--card-accent:var(--hot)" data-i18n="tag_rw">Fino a 36×</span>
+      <button class="game-btn" style="background:var(--hot)" data-i18n="btn_arrow">Gioca →</button>
+    </div>
+    <div class="game-card sl" onclick="openGame('sl')">
+      <div class="game-number">03</div>
+      <span class="game-icon">🎰</span>
+      <div class="game-name" data-i18n="card_sl">Slot Machine</div>
+      <p class="game-desc" data-i18n="desc_sl">Tre rulli, sette simboli e jackpot esplosivi. Allinea i diamanti per la vincita del secolo.</p>
+      <span class="game-tag" style="--card-accent:var(--cyan)" data-i18n="tag_sl">Fino a 50×</span>
+      <button class="game-btn" style="background:var(--cyan)" data-i18n="btn_arrow">Gioca →</button>
+    </div>
+    <div class="game-card" style="--card-accent:#E040FB" onclick="openGame('cs')">
+      <div class="game-number">04</div>
+      <span class="game-icon">📦</span>
+      <div class="game-name" data-i18n="card_cs">Casse Premi</div>
+      <p class="game-desc" data-i18n="desc_cs">Apri casse esclusive in stile CS:GO. Rullo animato, rarità leggendarie, skin ultra-rare. Ogni apertura è un'emozione.</p>
+      <span class="game-tag" style="border-color:#E040FB;color:#E040FB" data-i18n="tag_cs">Fino a 250×</span>
+      <button class="game-btn" style="background:#E040FB" data-i18n="btn_open_arrow">Apri →</button>
+    </div>
+    <div class="game-card" style="--card-accent:#00E676" onclick="openGame('cr')">
+      <div class="game-number">05</div>
+      <span class="game-icon">⬆️</span>
+      <div class="game-name" data-i18n="card_cr">Upgrade</div>
+      <p class="game-desc" data-i18n="desc_cr">Scegli il tuo bersaglio e sfida la fortuna. Riuscirai a fare l'upgrade e moltiplicare i tuoi crediti?</p>
+      <span class="game-tag" style="border-color:#00E676;color:#00E676" data-i18n="tag_cr">Fino a 1000×</span>
+      <button class="game-btn" style="background:#00E676;color:#000" data-i18n="btn_arrow">Gioca →</button>
+    </div>
+    <div class="game-card" style="--card-accent:#00E676" onclick="openGame('mn')">
+      <div class="game-number">06</div>
+      <span class="game-icon">💣</span>
+      <div class="game-name" data-i18n="card_mn">Mines</div>
+      <p class="game-desc" data-i18n="desc_mn">Rivela le gemme nascoste ed evita le bombe. Più ne trovi, più il premio cresce. Sfida la fortuna!</p>
+      <span class="game-tag" style="border-color:#00E676;color:#00E676" data-i18n="tag_mn">Fino a 10000×</span>
+      <button class="game-btn" style="background:#00E676;color:#000" data-i18n="btn_arrow">Gioca →</button>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ═══ AUTH MODAL ═══ -->
+<div class="overlay" id="modal-auth" style="z-index:9999; backdrop-filter: blur(10px); display: none;" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+  <div class="modal glass-modal" style="max-width:400px; text-align:center;">
+    <div class="modal-header" style="justify-content:center;">
+      <div class="modal-title" id="auth-title" style="font-size:2rem; letter-spacing:0.1em; color:var(--volt);">POLI STRIKE</div>
+    </div>
+    <div class="modal-body" style="padding:2rem;">
+      <p style="color:var(--muted); margin-bottom:2rem;" data-i18n="auth_desc">Accedi per partecipare alla classifica e personalizzare il tuo profilo, oppure gioca come ospite offline.</p>
+      <button class="btn-primary" style="background:var(--text); color:#000; width:100%; margin-bottom:1rem; font-weight:bold; display:flex; justify-content:center; align-items:center; gap:0.5rem;" onclick="window.appLoginGoogle()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z"/></svg>
+        <span data-i18n="auth_google">Accedi con Google</span>
+      </button>
+      <button class="btn-outline" style="width:100%; color:var(--text); border-color:rgba(255,255,255,0.2);" onclick="window.appLoginGuest()" data-i18n="auth_guest">Continua come Ospite</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SETTINGS MODAL ═══ -->
+<div class="overlay" id="modal-settings" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+  <div class="modal glass-modal" style="max-width:550px">
+    <button class="modal-close" onclick="window.closeModal('settings')" aria-label="Chiudi Impostazioni">×</button>
+    <div class="modal-header">
+      <h2 id="settings-title" data-i18n="nav_settings" style="display:flex; align-items:center; gap:0.5rem;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--volt);"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        IMPOSTAZIONI
+      </h2>
+    </div>
+    <div class="modal-body" style="padding:2rem;">
+      
+      <div class="settings-section">
+        <h3 class="settings-subtitle" data-i18n="set_theme">TEMA E ASPETTO</h3>
+        <p class="settings-desc" data-i18n="set_theme_desc">Personalizza l'interfaccia visiva del casinò per la tua sessione.</p>
+        <div class="theme-grid">
+          <button class="theme-card" onclick="window.setTheme('cyberpunk')">
+            <div class="theme-preview" style="background:#080808; border-color:#CCFF00;">
+              <span style="color:#CCFF00; font-family:'Bebas Neue'; font-size:1.5rem;">C</span>
+            </div>
+            <span class="theme-name" data-i18n="set_theme_cy">Cyberpunk</span>
+          </button>
+          <button class="theme-card" onclick="window.setTheme('light')">
+            <div class="theme-preview" style="background:#F8FAFC; border-color:#2563EB;">
+              <span style="color:#2563EB; font-family:'Bebas Neue'; font-size:1.5rem;">L</span>
+            </div>
+            <span class="theme-name" data-i18n="set_theme_light">Light</span>
+          </button>
+          <button class="theme-card" onclick="window.setTheme('midnight')">
+            <div class="theme-preview" style="background:#000000; border-color:#6366F1;">
+              <span style="color:#6366F1; font-family:'Bebas Neue'; font-size:1.5rem;">M</span>
+            </div>
+            <span class="theme-name" data-i18n="set_theme_mid">Midnight</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="settings-section danger-zone">
+        <h3 class="settings-subtitle" style="color:var(--hot);" data-i18n="set_danger">ZONA PERICOLOSA</h3>
+        <p class="settings-desc" data-i18n="set_danger_desc">Azioni irreversibili per il tuo account e i tuoi dati locali.</p>
+        <div class="danger-actions">
+          <button class="btn-danger-action" onclick="window.resetEverything()">
+            <div class="danger-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+            </div>
+            <div class="danger-text">
+              <span class="d-title" data-i18n="set_reset">Azzera Dati Locali (Ospite)</span>
+              <span class="d-sub" data-i18n="set_reset_sub">Cancella subito crediti, debiti e statistiche di gioco</span>
+            </div>
+          </button>
+          
+          <button class="btn-danger-action critical" onclick="window.deleteAccount()">
+            <div class="danger-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+            </div>
+            <div class="danger-text">
+              <span class="d-title" data-i18n="set_delete">Elimina Account Supabase</span>
+              <span class="d-sub" data-i18n="set_delete_sub">Cancellazione definitiva dal cloud (Irreversibile)</span>
+            </div>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CASSE MODAL ═══ -->
+<div class="overlay" id="modal-cs" role="dialog" aria-modal="true" aria-labelledby="cs-title">
+<div class="modal" style="max-width:820px">
+  <div class="modal-header">
+    <div class="modal-title" id="cs-title" data-i18n="modal_cs_title">📦 CASSE PREMI</div>
+    <button class="modal-close" onclick="closeGame('cs')" aria-label="Chiudi Casse">✕</button>
+  </div>
+  <div class="modal-body">
+    <div class="cs-layout">
+
+      <!-- SELEZIONE CASSA -->
+      <div id="cs-select-phase">
+        <div style="font-family:'Barlow Condensed';font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem" data-i18n="cs_select">Seleziona una Cassa</div>
+        <div class="cases-row" id="cases-row"></div>
+        <div style="font-family:'Barlow Condensed';font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:.8rem 0 .4rem" data-i18n="cs_rarities">Rarità Disponibili</div>
+        <div class="rarity-panel">
+          <div class="rarity-badge r-base"><span class="rb-pct">40%</span> Base</div>
+          <div class="rarity-badge r-mil"><span class="rb-pct">25%</span> Militare</div>
+          <div class="rarity-badge r-restricted"><span class="rb-pct">16%</span> Restricted</div>
+          <div class="rarity-badge r-classified"><span class="rb-pct">10%</span> Classified</div>
+          <div class="rarity-badge r-covert"><span class="rb-pct">6%</span> Covert</div>
+          <div class="rarity-badge r-rare"><span class="rb-pct">3%</span> 💡 Knife Rare</div>
+        </div>
+        <div class="ctrl-row" style="margin-top:1rem">
+          <button class="ctrl-btn go" id="btn-open-case" onclick="window.csStartCaseOpen()" style="padding:.7rem 2.5rem;font-size:.85rem" data-i18n="cs_btn_open">📦 Apri Cassa</button>
+        </div>
+      </div>
+
+      <!-- FASE RULLO -->
+      <div id="cs-roll-phase" style="display:none">
+        <div class="roll-viewport" id="roll-viewport">
+          <div class="roll-center-line"></div>
+          <div class="roll-track" id="roll-track"></div>
+        </div>
+        <div class="game-status" id="cs-msg" style="font-size:1rem;letter-spacing:.15em" data-i18n="cs_msg">La cassa si apre...</div>
+      </div>
+
+      <!-- WIN SCREEN -->
+      <div class="win-screen" id="cs-win-screen">
+        <div style="font-family:'Barlow Condensed';font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--muted)" data-i18n="cs_win_title">Hai Ottenuto</div>
+        <div class="win-item-big r-base" id="win-item-box">
+          <div class="win-emoji-big" id="win-emoji">📝</div>
+          <div class="win-name-big" id="win-name">Item Universitario</div>
+        </div>
+        <div class="win-rarity-badge r-base" id="win-rarity-badge">BASE</div>
+        <div class="win-value" id="win-value">+0</div>
+        <div class="win-sub" id="win-sub" data-i18n="cs_win_sub">Valore aggiunto al saldo</div>
+        <div class="ctrl-row" style="justify-content:center;gap:.8rem;margin-top:.5rem">
+          <button class="ctrl-btn go" onclick="window.csOpenAgain()" data-i18n="cs_btn_again">Apri Ancora</button>
+          <button class="ctrl-btn" onclick="window.csBackToSelect()" data-i18n="cs_btn_back">← Cambia Cassa</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+<div class="confetti-wrap" id="confetti-wrap"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-note">
+    <strong data-i18n="footer_1">Solo per divertimento</strong> · <span data-i18n="footer_2">Nessun denaro reale coinvolto</span><br>
+    <span data-i18n="footer_3">Gioco responsabile</span> · Poli Strike &copy; 2024
+  </div>
+</footer>
+
+<!-- CREDITS BAR -->
+<div id="credits-bar">
+  <div class="cr-item"><div class="cr-label" data-i18n="hud_balance">Saldo</div><div class="cr-val" id="bal-disp"> 1.000</div></div>
+  <div class="cr-item"><div class="cr-label" data-i18n="hud_pl">P&L Sessione</div><div class="cr-val" id="pl-disp" style="color:var(--cyan)"> 0</div></div>
+  <div class="cr-item"><div class="cr-label" data-i18n="hud_hands">Mani</div><div class="cr-val" id="hands-disp">0</div></div>
+  
+  <button class="ctrl-btn" style="font-size:.7rem;padding:.4rem 1rem; border-color: var(--cyan); color: var(--cyan);" onclick="claimBonus()" data-i18n="menu_daily">🎁 Bonus</button>
+  <button class="ctrl-btn" style="font-size:.7rem;padding:.4rem 1rem; border-color: var(--hot); color: var(--hot);" onclick="takeStudentLoan()" data-i18n="menu_loan">💸 Prestito</button>
+
+</div>
+
+<!-- ═══ BLACKJACK MODAL ═══ -->
+<div class="overlay" id="modal-bj" role="dialog" aria-modal="true" aria-labelledby="bj-title">
+<div class="modal">
+  <div class="modal-header">
+    <div class="modal-title" id="bj-title" data-i18n="modal_bj_title">🃏 BLACKJACK</div>
+    <button class="modal-close" onclick="closeGame('bj')" aria-label="Chiudi Blackjack">✕</button>
+  </div>
+  <div class="modal-body">
+    <div class="bj-felt">
+      <div class="hand-label-v"><span data-i18n="bj_dealer">Mazziere</span> <span class="hand-score" id="d-score">0</span></div>
+      <div class="cards-row" id="d-hand"></div>
+      <div class="divider-felt"></div>
+      <div class="hand-label-v"><span data-i18n="bj_player">Il Vostro Gioco</span> <span class="hand-score" id="p-score">0</span></div>
+      <div class="cards-row" id="p-hand"></div>
+    </div>
+    <div class="game-status" id="bj-msg" data-i18n="bj_msg">Piazzate la puntata e distribuite</div>
+    <div class="chip-row" style="margin-bottom:.5rem">
+      <div class="chip c5" onclick="window.bjAddBet(5)">5</div>
+      <div class="chip c10" onclick="window.bjAddBet(10)">10</div>
+      <div class="chip c25" onclick="window.bjAddBet(25)">25</div>
+      <div class="chip c50" onclick="window.bjAddBet(50)">50</div>
+      <div class="chip c100" onclick="window.bjAddBet(100)">100</div>
+      <div class="cur-bet-display"><span id="bet-disp">0</span></div>
+      <button class="ctrl-btn danger" onclick="window.bjClearBet()" style="margin-left:auto" data-i18n="btn_clear">Azzera</button>
+    </div>
+    <div class="ctrl-row">
+      <button class="ctrl-btn go" id="btn-deal" onclick="window.bjDeal()" data-i18n="bj_deal">Distribuisci</button>
+      <button class="ctrl-btn" id="btn-hit" onclick="window.bjHit()" disabled data-i18n="bj_hit">Carta</button>
+      <button class="ctrl-btn" id="btn-stand" onclick="window.bjStand()" disabled data-i18n="bj_stand">Stai</button>
+      <button class="ctrl-btn" id="btn-dbl" onclick="window.bjDouble()" disabled data-i18n="bj_dbl">Raddoppia</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ ROULETTE MODAL ═══ -->
+<div class="overlay" id="modal-rw" role="dialog" aria-modal="true" aria-labelledby="rw-title">
+<div class="modal" style="max-width: 960px;">
+  <div class="modal-header">
+    <div class="modal-title" id="rw-title" data-i18n="modal_rw_title">🎡 ROULETTE</div>
+    <button class="modal-close" onclick="closeGame('rw')" aria-label="Chiudi Roulette">✕</button>
+  </div>
+  <div class="modal-body">
+    <div class="rw-layout">
+      <div class="wheel-wrap">
+        <div class="wheel-pointer-v">▼</div>
+        <canvas id="rwCanvas" width="340" height="340"></canvas>
+      </div>
+      <div class="rw-right">
+        <div class="game-status" id="rw-msg" data-i18n="rw_msg">Scegliete puntata e numero</div>
+        <div class="number-grid" id="num-grid"></div>
+        <div class="special-row">
+          <button class="spec-btn" onclick="window.rwSpecial(this,'red')">🔴 Rosso ×2</button>
+          <button class="spec-btn" onclick="window.rwSpecial(this,'black')">⚫ Nero ×2</button>
+          <button class="spec-btn" onclick="window.rwSpecial(this,'even')">Pari ×2</button>
+          <button class="spec-btn" onclick="window.rwSpecial(this,'odd')">Dispari ×2</button>
+          <button class="spec-btn" onclick="window.rwSpecial(this,'low')">1-18 ×2</button>
+          <button class="spec-btn" onclick="window.rwSpecial(this,'high')">19-36 ×2</button>
+        </div>
+        <div class="chip-row">
+          <div class="chip c5" onclick="window.bjAddBet(5)">5</div>
+          <div class="chip c10" onclick="window.bjAddBet(10)">10</div>
+          <div class="chip c25" onclick="window.bjAddBet(25)">25</div>
+          <div class="chip c50" onclick="window.bjAddBet(50)">50</div>
+          <div class="cur-bet-display"><span id="bet-disp-rw">0</span></div>
+          <button class="ctrl-btn danger" onclick="window.bjClearBet()" data-i18n="btn_clear">Azzera</button>
+        </div>
+        <div class="ctrl-row">
+          <button class="ctrl-btn go" id="btn-spin" onclick="window.rwSpin()" data-i18n="rw_spin">Gira la Ruota</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ SLOTS MODAL ═══ -->
+<div class="overlay" id="modal-sl" role="dialog" aria-modal="true" aria-labelledby="sl-title">
+<div class="modal">
+  <div class="modal-header">
+    <div class="modal-title" id="sl-title" data-i18n="modal_sl_title">🎰 SLOT MACHINE</div>
+    <button class="modal-close" onclick="closeGame('sl')" aria-label="Chiudi Slot">✕</button>
+  </div>
+  <div class="modal-body">
+    <div class="machine-wrap">
+      <div class="reels-display" id="reels-display">
+        <div class="reel-col"><div class="win-flash" id="wf0"></div><div class="reel-sym-v" id="reel0">☕</div></div>
+        <div class="reel-col"><div class="win-flash" id="wf1"></div><div class="reel-sym-v" id="reel1">📐</div></div>
+        <div class="reel-col"><div class="win-flash" id="wf2"></div><div class="reel-sym-v" id="reel2">💡</div></div>
+      </div>
+      <div class="game-status" id="sl-msg" data-i18n="sl_msg">Buona fortuna! Gira i rulli.</div>
+      <div class="chip-row" style="justify-content:center;margin-bottom:1rem">
+        <div class="chip c5" onclick="window.bjAddBet(5)">5</div>
+        <div class="chip c10" onclick="window.bjAddBet(10)">10</div>
+        <div class="chip c25" onclick="window.bjAddBet(25)">25</div>
+        <div class="cur-bet-display"><span id="bet-disp-sl">0</span></div>
+        <button class="ctrl-btn danger" onclick="window.bjClearBet()" data-i18n="btn_clear">Azzera</button>
+      </div>
+      <div style="text-align:center">
+        <button class="ctrl-btn go" id="btn-slots" onclick="window.slSpin()" style="padding:.8rem 3rem;font-size:.9rem" data-i18n="sl_spin">▶ GIRA</button>
+      </div>
+    </div>
+    <div style="font-family:'Barlow Condensed';font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem" data-i18n="sl_payout_title">Tabella Pagamenti</div>
+    <div class="payout-grid">
+      <div class="pay-row"><span class="pay-sym">🎓🎓🎓</span><span class="pay-mult">×100</span></div>
+      <div class="pay-row"><span class="pay-sym">7️⃣7️⃣7️⃣</span><span class="pay-mult">×75</span></div>
+      <div class="pay-row"><span class="pay-sym">💡💡💡</span><span class="pay-mult">×40</span></div>
+      <div class="pay-row"><span class="pay-sym">🧮🧮🧮</span><span class="pay-mult">×25</span></div>
+      <div class="pay-row"><span class="pay-sym">📚📚📚</span><span class="pay-mult">×15</span></div>
+      <div class="pay-row"><span class="pay-sym">📐📐📐</span><span class="pay-mult">×10</span></div>
+      <div class="pay-row"><span class="pay-sym">☕☕☕</span><span class="pay-mult">×10</span></div>
+      <div class="pay-row" style="grid-column:1/-1;text-align:center;padding-top:.5rem;"><span class="pay-sym" style="font-size:.7rem;" data-i18n="sl_anywhere">☕☕ IN QUALSIASI POSIZIONE</span><span class="pay-mult">×3</span></div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- ═══ UPGRADE MODAL ═══ -->
+<div class="overlay" id="modal-cr" role="dialog" aria-modal="true" aria-labelledby="cr-title">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="cr-title">⬆️ UPGRADE</div>
+      <button class="modal-close" onclick="closeGame('cr')" aria-label="Chiudi Upgrade">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="machine-wrap" style="background:var(--dark); padding:2rem; border-radius:12px; margin-bottom:1.5rem; text-align:center; position:relative; overflow:hidden;">
+        <div id="cr-chart" style="height:250px; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative;">
+          
+          <!-- Upgrader Wheel -->
+          <svg viewBox="0 0 100 100" style="position:absolute; width:220px; height:220px; transform:rotate(-90deg); z-index:1;">
+            <!-- Background (Fail) -->
+            <circle cx="50" cy="50" r="45" fill="none" stroke="#2a2a2a" stroke-width="10"></circle>
+            <!-- Win Slice -->
+            <circle id="upg-win-slice" cx="50" cy="50" r="45" fill="none" stroke="#00E676" stroke-width="10" stroke-dasharray="282.74" stroke-dashoffset="0" style="transition: stroke-dashoffset 0.3s;"></circle>
+          </svg>
+          
+          <!-- Needle -->
+          <div id="upg-needle-container" style="position:absolute; width:220px; height:220px; z-index:2; transition: transform 3s cubic-bezier(0.1, 0.7, 0.1, 1); transform: rotate(0deg);">
+            <div style="position:absolute; top:0px; left:50%; transform:translateX(-50%); width:6px; height:24px; background:#fff; border-radius:3px; box-shadow:0 0 8px rgba(255,255,255,0.8); z-index:3;"></div>
+            <!-- Center dot for aesthetics -->
+            <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:12px; height:12px; background:#fff; border-radius:50%; box-shadow:0 0 8px rgba(255,255,255,0.5);"></div>
+          </div>
+          
+          <!-- Center Text -->
+          <div style="z-index:4; display:flex; flex-direction:column; align-items:center; background:var(--dark); border-radius:50%; width:160px; height:160px; justify-content:center; box-shadow:inset 0 0 20px rgba(0,0,0,0.8);">
+            <div style="font-family:'Barlow Condensed'; font-size:1rem; color:var(--muted); text-transform:uppercase;" data-i18n="upg_win_chance">Win Chance</div>
+            <div id="cr-prob" style="font-family:'Bebas Neue'; font-size:3.5rem; color:var(--text); text-shadow:0 0 10px rgba(0,0,0,0.5); line-height:1;">47.50%</div>
+          </div>
+          
+        </div>
+      </div>
+      
+      <div class="game-status" id="cr-msg" data-i18n="upg_choose">Scegli Target e Puntata!</div>
+      
+      <div style="display:flex; justify-content:center; gap:2rem; margin-bottom:1.5rem; flex-wrap:wrap;">
+        <!-- Bet Input -->
+        <div style="flex:1; min-width:200px;">
+          <div style="font-family:'Barlow Condensed'; font-size:1rem; color:var(--muted); margin-bottom:0.5rem; text-align:left;" data-i18n="mn_bet_label">PUNTATA</div>
+          <div class="chip-row" style="justify-content:flex-start; margin-bottom:0.5rem; padding:0;">
+            <div class="chip c5" onclick="window.crAddBet(5)">5</div>
+            <div class="chip c10" onclick="window.crAddBet(10)">10</div>
+            <div class="chip c50" onclick="window.crAddBet(50)">50</div>
+            <div class="chip c100" onclick="window.crAddBet(100)">100</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:1rem;">
+             <span id="cr-bet" style="font-family:'Bebas Neue'; font-size:1.5rem; color:#FF9800;">0</span> <span style="color:var(--muted)">CFU</span>
+             <button class="ctrl-btn danger" onclick="window.crClearBet()" style="padding:0.3rem 0.8rem; font-size:0.8rem;">Azzera</button>
+          </div>
+        </div>
+        
+        <!-- Target Multiplier Input -->
+        <div style="flex:1; min-width:200px; text-align:left;">
+          <div style="font-family:'Barlow Condensed'; font-size:1rem; color:var(--muted); margin-bottom:0.5rem;" data-i18n="upg_target">TARGET MULTIPLIER (×)</div>
+          <div style="display:flex; gap:0.5rem; margin-bottom:0.5rem;">
+            <button class="ctrl-btn" onclick="window.upgSetTarget(1.5)">1.5×</button>
+            <button class="ctrl-btn" onclick="window.upgSetTarget(2.0)">2×</button>
+            <button class="ctrl-btn" onclick="window.upgSetTarget(5.0)">5×</button>
+            <button class="ctrl-btn" onclick="window.upgSetTarget(10.0)">10×</button>
+          </div>
+          <input type="number" id="upg-target-input" class="premium-input" style="width:100%; max-width:200px; padding:0.5rem;" value="2.00" step="0.1" min="1.01" max="1000" oninput="window.upgUpdateTarget(this.value)">
+        </div>
+      </div>
+      
+      <div style="display:flex; justify-content:center; gap:1rem;" id="cr-controls">
+        <button id="cr-btn-bet" class="ctrl-btn go" style="background:#00E676; border-color:#00E676; padding:1rem 3rem; font-size:1.5rem; width:100%; max-width:400px; letter-spacing:0.1em;" onclick="window.crAction()">UPGRADE</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MINES MODAL ═══ -->
+<div class="overlay" id="modal-mn" role="dialog" aria-modal="true" aria-labelledby="mn-title">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="mn-title" data-i18n="modal_mn_title">💣 MINES</div>
+      <button class="modal-close" onclick="closeGame('mn')" aria-label="Chiudi Mines">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="display:flex; flex-wrap:wrap; gap:2rem;">
+        
+        <!-- Controlli -->
+        <div style="flex:1; min-width:250px;">
+          <div class="game-status" id="mn-msg" data-i18n="mn_msg" style="text-align:left; margin-bottom:1rem;">Imposta bombe e puntata.</div>
+          
+          <label class="premium-label" data-i18n="mn_bombs_label">NUMERO DI BOMBE (1-23)</label>
+          <div style="display:flex; gap:0.5rem; margin-bottom:1.5rem; flex-wrap:wrap;">
+            <button class="ctrl-btn" onclick="window.mnSetBombs(1)">1</button>
+            <button class="ctrl-btn" onclick="window.mnSetBombs(3)">3</button>
+            <button class="ctrl-btn" onclick="window.mnSetBombs(5)">5</button>
+            <button class="ctrl-btn" onclick="window.mnSetBombs(10)">10</button>
+            <input type="number" id="mn-bombs" class="premium-input" style="width:80px; text-align:center; padding:0.5rem;" value="3" min="1" max="23" onchange="window.mnUpdateBombs(this.value)">
+          </div>
+
+          <label class="premium-label" data-i18n="mn_bet_label">PUNTATA</label>
+          <div class="chip-row" style="margin-bottom:1rem; flex-wrap:wrap;">
+            <div class="chip c5" onclick="window.mnAddBet(5)">5</div>
+            <div class="chip c10" onclick="window.mnAddBet(10)">10</div>
+            <div class="chip c50" onclick="window.mnAddBet(50)">50</div>
+            <div class="chip c100" onclick="window.mnAddBet(100)">100</div>
+            <button class="ctrl-btn danger" onclick="window.mnClearBet()" data-i18n="btn_clear">Azzera</button>
+          </div>
+          <div style="font-family:'Barlow Condensed'; font-size:1.2rem; color:var(--text); margin-bottom:2rem;">
+            <span data-i18n="mn_bet">Puntata:</span> <span id="mn-bet" style="color:#00E676; font-weight:700;">0</span><br>
+            <span data-i18n="mn_next" style="font-size:0.9rem; color:var(--muted);">Prossima Gemma:</span> <span id="mn-next" style="color:var(--text);">1.00×</span>
+          </div>
+
+          <button id="mn-btn-action" class="ctrl-btn go" style="background:#00E676; border-color:#00E676; width:100%; padding:1rem; font-size:1.2rem;" onclick="window.mnAction()" data-i18n="mn_start">GIOCA</button>
+        </div>
+
+        <!-- Griglia -->
+        <div style="flex:1; min-width:300px; display:flex; justify-content:center; align-items:center;">
+          <div id="mn-grid" class="mines-grid">
+            <!-- 25 tiles -->
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PROFILE -->
+<div class="overlay" id="modal-profile" role="dialog" aria-modal="true" aria-labelledby="profile-title">
+  <div class="modal glass-modal">
+    <button class="modal-close" onclick="window.closeModal('profile')" aria-label="Chiudi Profilo">×</button>
+    <div class="modal-header">
+      <h2 id="profile-title" data-i18n="prof_title">IL TUO PROFILO</h2>
+    </div>
+    <div class="modal-body" style="padding:2rem;">
+      <p style="margin-bottom:1rem; color:var(--muted)" data-i18n="prof_desc">Scegli un nickname e il tuo corso di studi per partecipare alla classifica di ateneo.</p>
+      
+      <div style="margin-bottom:1.5rem">
+        <label class="premium-label" data-i18n="prof_nick">NICKNAME (visibile in classifica)</label>
+        <input type="text" id="prof-nickname" class="premium-input" placeholder="MarioRossi">
+      </div>
+      
+      <div style="margin-bottom:1.5rem">
+        <label class="premium-label" data-i18n="prof_ig">PROFILO INSTAGRAM (OPZIONALE)</label>
+        <input type="text" id="prof-ig" class="premium-input" placeholder="TuoNomeIG">
+      </div>
+      
+      <div style="margin-bottom:2rem">
+        <label class="premium-label" data-i18n="prof_course">CORSO DI STUDI</label>
+        <select id="prof-course" class="premium-input" style="appearance:none;">
+          <!-- Popolato dinamicamente -->
+        </select>
+      </div>
+      
+      <div style="margin-bottom:2rem; display:flex; align-items:flex-start; gap:0.5rem; text-align:left;">
+        <input type="checkbox" id="prof-consent" style="margin-top:0.3rem;">
+        <label for="prof-consent" style="color:var(--muted); font-size:0.8rem; line-height:1.2;">Acconsento al trattamento dei miei dati per la classifica. <a href="#" onclick="window.openPrivacy()" style="color:var(--volt); text-decoration:none;">Leggi la Privacy Policy</a>.</label>
+      </div>
+      
+      <div style="text-align:right">
+        <span id="prof-msg" style="margin-right:1rem;"></span>
+        <button class="btn-primary" onclick="window.saveProfile()" data-i18n="prof_save">Salva Profilo</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL LEADERBOARD -->
+<div class="overlay" id="modal-leaderboard" role="dialog" aria-modal="true" aria-labelledby="lb-title">
+  <div class="modal glass-modal" style="max-width:600px;">
+    <button class="modal-close" onclick="window.closeModal('leaderboard')" aria-label="Chiudi Classifica">×</button>
+    <div class="modal-header">
+      <h2 id="lb-title" data-i18n="lb_title">CLASSIFICA DI ATENEO</h2>
+    </div>
+    <div class="modal-body" style="padding:1rem;">
+      <div class="tabs" style="display:flex; border-bottom:1px solid rgba(255,255,255,0.1); margin-bottom:1rem;">
+        <button class="tab-btn active" id="tab-global" onclick="window.switchLeaderboardTab('global')" data-i18n="lb_tab_glob">MIGLIORI STUDENTI</button>
+        <button class="tab-btn" id="tab-course" onclick="window.switchLeaderboardTab('course')" data-i18n="lb_tab_course">MEDIA PER CORSO</button>
+      </div>
+      <div id="leaderboard-list" style="max-height:400px; overflow-y:auto; margin-bottom:1rem;"></div>
+      <div style="text-align:center">
+        <button class="btn-primary" style="width:100%" onclick="window.syncScore()" data-i18n="lb_submit">Invia Punteggio in Classifica</button>
+        <div id="lb-msg" style="margin-top:0.5rem; font-size:0.9rem;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- MODAL PRIVACY -->
+<div class="overlay" id="modal-privacy" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
+  <div class="modal glass-modal" style="max-width:600px;">
+    <button class="modal-close" onclick="window.closeModal('privacy')" aria-label="Chiudi Privacy">×</button>
+    <div class="modal-header">
+      <h2 id="privacy-title">PRIVACY & COOKIE POLICY</h2>
+    </div>
+    <div class="modal-body" style="padding:2rem; color:var(--text); text-align:left; font-size:0.9rem; line-height:1.5;">
+      <h3 style="color:var(--volt); margin-bottom:0.5rem;">1. Cookie Tecnici e Salvataggio Dati</h3>
+      <p style="margin-bottom:1rem; color:var(--muted);">Il sito salva le tue preferenze (tema, lingua, stato di gioco e scelta del banner) direttamente sul tuo dispositivo tramite <code>localStorage</code>. Questi dati sono necessari per il funzionamento base del sito.</p>
+      
+      <h3 style="color:var(--volt); margin-bottom:0.5rem;">2. Tracciamento Analitico</h3>
+      <p style="margin-bottom:1rem; color:var(--muted);">Se accetti il tracciamento dal banner, il sito attiverà script di misurazione (es. pagine visitate). Se lo rifiuti, queste statistiche non verranno inviate.</p>
+      
+      <h3 style="color:var(--volt); margin-bottom:0.5rem;">3. Classifica e Supabase</h3>
+      <p style="margin-bottom:1rem; color:var(--muted);">Se decidi di partecipare alla classifica (salvando un profilo), il tuo nickname, il corso di studi e il tuo saldo verranno inviati al nostro database (Supabase) per essere visibili agli altri giocatori. Puoi sempre eliminare il tuo account dalla sezione "Impostazioni".</p>
+      
+      <div style="text-align:center; margin-top:2rem;">
+        <button class="btn-primary" onclick="window.closeModal('privacy')">Ho capito</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a href="https://buymeacoffee.com/donzaa" target="_blank" class="bmc-button" data-i18n="support_btn">Offrimi un Caffè ☕</a>
+
+<!-- ═══ COOKIE BANNER ═══ -->
+<div id="cookie-banner" style="display:none; position:fixed; bottom:4.5rem; left:1rem; right:1rem; background:var(--dark2); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:1.5rem; z-index:10000; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.5); max-width: 800px; margin: 0 auto;">
+  <p style="margin-bottom:1rem; color:var(--text); font-size:0.9rem;">Utilizziamo cookie tecnici e di analisi per migliorare la tua esperienza. <a href="#" onclick="window.openPrivacy()" style="color:var(--volt); text-decoration:none;">Leggi l'Informativa</a>.</p>
+  <div style="display:flex; justify-content:center; gap:1rem;">
+    <button class="btn-primary" onclick="window.acceptCookies()" style="padding:0.5rem 1.5rem; font-size:0.9rem;">Accetta Tutto</button>
+    <button class="btn-outline" onclick="window.rejectCookies()" style="padding:0.5rem 1.5rem; font-size:0.9rem;">Rifiuta</button>
+  </div>
+</div>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<script type="module" src="js/main.js?v=2"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+  }
+</script>
+</body>
+
+</html>
