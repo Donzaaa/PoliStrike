@@ -38,7 +38,6 @@
     <button aria-label="Gioca alle Slot Machine" class="nav-link" onclick="openGame('sl')" data-i18n="nav_slots">Slot Machine</button>
     <button aria-label="Apri le Casse" class="nav-link" onclick="openGame('cs')" style="color:#E040FB" data-i18n="nav_crates">Casse</button>
     <button aria-label="Vedi Classifica" class="nav-link" id="nav-leaderboard" onclick="window.openLeaderboard()" style="color:var(--volt)" data-i18n="nav_leaderboard">Classifica</button>
-    <button aria-label="Apri Impostazioni" class="nav-link" id="nav-settings" onclick="window.openSettings()" data-i18n="nav_settings">Impostazioni</button>
     <button aria-label="Apri Profilo" class="nav-link" id="nav-profile" onclick="window.openProfile()" data-i18n="nav_profile">Profilo</button>
     <button aria-label="Cambia Lingua" class="nav-link" id="lang-toggle-btn" onclick="window.toggleLang()" style="margin-left: 1rem; border: none; background: transparent; padding: 0; display: flex; align-items: center; justify-content: center;"><img src="https://flagcdn.com/w40/gb.png" width="32" alt="Cambia Lingua" style="border-radius:4px"></button>
   </nav>
@@ -62,8 +61,8 @@
 
 <!-- STATS BAR -->
 <div class="stats-bar">
-  <div class="stat"><div class="stat-num">4</div><div class="stat-label" data-i18n="stat_games">Giochi Disponibili</div></div>
-  <div class="stat"><div class="stat-num">1.000 CFU</div><div class="stat-label" data-i18n="stat_credit">Credito Iniziale</div></div>
+  <div class="stat"><div class="stat-num">6</div><div class="stat-label" data-i18n="stat_games">Giochi Disponibili</div></div>
+  <div class="stat"><div class="stat-num gradient">1.000 CFU</div><div class="stat-label" data-i18n="stat_credit">Credito Iniziale</div></div>
   <div class="stat"><div class="stat-num">36:1</div><div class="stat-label" data-i18n="stat_max_payout">Max Pagamento</div></div>
   <div class="stat"><div class="stat-num">100%</div><div class="stat-label" data-i18n="hud_balance">SALDO</div></div>
 </div>
@@ -77,7 +76,7 @@
   <div class="games-grid">
     <div class="game-card bj" onclick="openGame('bj')">
       <div class="game-number">01</div>
-      <span class="game-icon">🃏</span>
+
       <div class="game-name" data-i18n="card_bj">Blackjack</div>
       <p class="game-desc" data-i18n="desc_bj">Il classico gioco da tavolo. Batti il banco senza sballare il 21. Blackjack naturale paga 3:2.</p>
       <span class="game-tag" data-i18n="tag_bj">Fino a 2.5×</span>
@@ -85,7 +84,7 @@
     </div>
     <div class="game-card rw" onclick="openGame('rw')">
       <div class="game-number">02</div>
-      <span class="game-icon">🎡</span>
+
       <div class="game-name" data-i18n="card_rw">Roulette</div>
       <p class="game-desc" data-i18n="desc_rw">La regina dei casinò. Punta su numeri, colori o gruppi. La palla decide il tuo destino.</p>
       <span class="game-tag" style="--card-accent:var(--hot)" data-i18n="tag_rw">Fino a 36×</span>
@@ -93,7 +92,7 @@
     </div>
     <div class="game-card sl" onclick="openGame('sl')">
       <div class="game-number">03</div>
-      <span class="game-icon">🎰</span>
+
       <div class="game-name" data-i18n="card_sl">Slot Machine</div>
       <p class="game-desc" data-i18n="desc_sl">Tre rulli, sette simboli e jackpot esplosivi. Allinea i diamanti per la vincita del secolo.</p>
       <span class="game-tag" style="--card-accent:var(--cyan)" data-i18n="tag_sl">Fino a 50×</span>
@@ -101,7 +100,7 @@
     </div>
     <div class="game-card" style="--card-accent:#E040FB" onclick="openGame('cs')">
       <div class="game-number">04</div>
-      <span class="game-icon">📦</span>
+
       <div class="game-name" data-i18n="card_cs">Casse Premi</div>
       <p class="game-desc" data-i18n="desc_cs">Apri casse esclusive in stile CS:GO. Rullo animato, rarità leggendarie, skin ultra-rare. Ogni apertura è un'emozione.</p>
       <span class="game-tag" style="border-color:#E040FB;color:#E040FB" data-i18n="tag_cs">Fino a 250×</span>
@@ -109,7 +108,7 @@
     </div>
     <div class="game-card" style="--card-accent:#00E676" onclick="openGame('cr')">
       <div class="game-number">05</div>
-      <span class="game-icon">⬆️</span>
+
       <div class="game-name" data-i18n="card_cr">Upgrade</div>
       <p class="game-desc" data-i18n="desc_cr">Scegli il tuo bersaglio e sfida la fortuna. Riuscirai a fare l'upgrade e moltiplicare i tuoi crediti?</p>
       <span class="game-tag" style="border-color:#00E676;color:#00E676" data-i18n="tag_cr">Fino a 1000×</span>
@@ -117,7 +116,7 @@
     </div>
     <div class="game-card" style="--card-accent:#00E676" onclick="openGame('mn')">
       <div class="game-number">06</div>
-      <span class="game-icon">💣</span>
+
       <div class="game-name" data-i18n="card_mn">Mines</div>
       <p class="game-desc" data-i18n="desc_mn">Rivela le gemme nascoste ed evita le bombe. Più ne trovi, più il premio cresce. Sfida la fortuna!</p>
       <span class="game-tag" style="border-color:#00E676;color:#00E676" data-i18n="tag_mn">Fino a 10000×</span>
@@ -128,7 +127,7 @@
 </main>
 
 <!-- ═══ AUTH MODAL ═══ -->
-<div class="overlay" id="modal-auth" style="z-index:9999; backdrop-filter: blur(10px); display: none;" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+<div class="overlay" id="modal-auth" style="z-index:9999; backdrop-filter: blur(10px);" role="dialog" aria-modal="true" aria-labelledby="auth-title">
   <div class="modal glass-modal" style="max-width:400px; text-align:center;">
     <div class="modal-header" style="justify-content:center;">
       <div class="modal-title" id="auth-title" style="font-size:2rem; letter-spacing:0.1em; color:var(--volt);">POLI STRIKE</div>
@@ -144,72 +143,7 @@
   </div>
 </div>
 
-<!-- ═══ SETTINGS MODAL ═══ -->
-<div class="overlay" id="modal-settings" role="dialog" aria-modal="true" aria-labelledby="settings-title">
-  <div class="modal glass-modal" style="max-width:550px">
-    <button class="modal-close" onclick="window.closeModal('settings')" aria-label="Chiudi Impostazioni">×</button>
-    <div class="modal-header">
-      <h2 id="settings-title" data-i18n="nav_settings" style="display:flex; align-items:center; gap:0.5rem;">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--volt);"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-        IMPOSTAZIONI
-      </h2>
-    </div>
-    <div class="modal-body" style="padding:2rem;">
-      
-      <div class="settings-section">
-        <h3 class="settings-subtitle" data-i18n="set_theme">TEMA E ASPETTO</h3>
-        <p class="settings-desc" data-i18n="set_theme_desc">Personalizza l'interfaccia visiva del casinò per la tua sessione.</p>
-        <div class="theme-grid">
-          <button class="theme-card" onclick="window.setTheme('cyberpunk')">
-            <div class="theme-preview" style="background:#080808; border-color:#CCFF00;">
-              <span style="color:#CCFF00; font-family:'Bebas Neue'; font-size:1.5rem;">C</span>
-            </div>
-            <span class="theme-name" data-i18n="set_theme_cy">Cyberpunk</span>
-          </button>
-          <button class="theme-card" onclick="window.setTheme('light')">
-            <div class="theme-preview" style="background:#F8FAFC; border-color:#2563EB;">
-              <span style="color:#2563EB; font-family:'Bebas Neue'; font-size:1.5rem;">L</span>
-            </div>
-            <span class="theme-name" data-i18n="set_theme_light">Light</span>
-          </button>
-          <button class="theme-card" onclick="window.setTheme('midnight')">
-            <div class="theme-preview" style="background:#000000; border-color:#6366F1;">
-              <span style="color:#6366F1; font-family:'Bebas Neue'; font-size:1.5rem;">M</span>
-            </div>
-            <span class="theme-name" data-i18n="set_theme_mid">Midnight</span>
-          </button>
-        </div>
-      </div>
 
-      <div class="settings-section danger-zone">
-        <h3 class="settings-subtitle" style="color:var(--hot);" data-i18n="set_danger">ZONA PERICOLOSA</h3>
-        <p class="settings-desc" data-i18n="set_danger_desc">Azioni irreversibili per il tuo account e i tuoi dati locali.</p>
-        <div class="danger-actions">
-          <button class="btn-danger-action" onclick="window.resetEverything()">
-            <div class="danger-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
-            </div>
-            <div class="danger-text">
-              <span class="d-title" data-i18n="set_reset">Azzera Dati Locali (Ospite)</span>
-              <span class="d-sub" data-i18n="set_reset_sub">Cancella subito crediti, debiti e statistiche di gioco</span>
-            </div>
-          </button>
-          
-          <button class="btn-danger-action critical" onclick="window.deleteAccount()">
-            <div class="danger-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-            </div>
-            <div class="danger-text">
-              <span class="d-title" data-i18n="set_delete">Elimina Account Supabase</span>
-              <span class="d-sub" data-i18n="set_delete_sub">Cancellazione definitiva dal cloud (Irreversibile)</span>
-            </div>
-          </button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</div>
 
 <!-- ═══ CASSE MODAL ═══ -->
 <div class="overlay" id="modal-cs" role="dialog" aria-modal="true" aria-labelledby="cs-title">
@@ -534,9 +468,9 @@
 <!-- MODAL PROFILE -->
 <div class="overlay" id="modal-profile" role="dialog" aria-modal="true" aria-labelledby="profile-title">
   <div class="modal glass-modal">
-    <button class="modal-close" onclick="window.closeModal('profile')" aria-label="Chiudi Profilo">×</button>
     <div class="modal-header">
-      <h2 id="profile-title" data-i18n="prof_title">IL TUO PROFILO</h2>
+      <h2 id="profile-title" data-i18n="prof_title" style="margin:0;">IL TUO PROFILO</h2>
+      <button class="modal-close" onclick="window.closeModal('profile')" aria-label="Chiudi Profilo">×</button>
     </div>
     <div class="modal-body" style="padding:2rem;">
       <p style="margin-bottom:1rem; color:var(--muted)" data-i18n="prof_desc">Scegli un nickname e il tuo corso di studi per partecipare alla classifica di ateneo.</p>
@@ -563,9 +497,72 @@
         <label for="prof-consent" style="color:var(--muted); font-size:0.8rem; line-height:1.2;">Acconsento al trattamento dei miei dati per la classifica. <a href="#" onclick="window.openPrivacy()" style="color:var(--volt); text-decoration:none;">Leggi la Privacy Policy</a>.</label>
       </div>
       
-      <div style="text-align:right">
+      <div style="text-align:right; margin-bottom:2rem;">
         <span id="prof-msg" style="margin-right:1rem;"></span>
         <button class="btn-primary" onclick="window.saveProfile()" data-i18n="prof_save">Salva Profilo</button>
+      </div>
+
+      <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin-bottom:2rem;">
+
+      <div class="settings-section">
+        <h3 class="settings-subtitle" data-i18n="set_theme">TEMA E ASPETTO</h3>
+        <p class="settings-desc" data-i18n="set_theme_desc">Personalizza l'interfaccia visiva del casinò per la tua sessione.</p>
+        <div class="theme-grid">
+          <button class="theme-card" onclick="window.setTheme('cyberpunk')">
+            <div class="theme-preview" style="background:#080808; border-color:#CCFF00;">
+              <span style="color:#CCFF00; font-family:'Bebas Neue'; font-size:1.5rem;">C</span>
+            </div>
+            <span class="theme-name" data-i18n="set_theme_cy">Cyberpunk</span>
+          </button>
+          <button class="theme-card" onclick="window.setTheme('light')">
+            <div class="theme-preview" style="background:#F8FAFC; border-color:#2563EB;">
+              <span style="color:#2563EB; font-family:'Bebas Neue'; font-size:1.5rem;">L</span>
+            </div>
+            <span class="theme-name" data-i18n="set_theme_light">Light</span>
+          </button>
+          <button class="theme-card" onclick="window.setTheme('midnight')">
+            <div class="theme-preview" style="background:#000000; border-color:#6366F1;">
+              <span style="color:#6366F1; font-family:'Bebas Neue'; font-size:1.5rem;">M</span>
+            </div>
+            <span class="theme-name" data-i18n="set_theme_mid">Midnight</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="settings-section danger-zone">
+        <h3 class="settings-subtitle" style="color:var(--hot);" data-i18n="set_danger">ZONA PERICOLOSA</h3>
+        <p class="settings-desc" data-i18n="set_danger_desc">Azioni irreversibili per il tuo account e i tuoi dati locali.</p>
+        <div class="danger-actions">
+          <button class="btn-danger-action" onclick="window.resetEverything()">
+            <div class="danger-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+            </div>
+            <div class="danger-text">
+              <span class="d-title" data-i18n="set_reset">Azzera Dati Locali (Ospite)</span>
+              <span class="d-sub" data-i18n="set_reset_sub">Cancella subito crediti, debiti e statistiche di gioco</span>
+            </div>
+          </button>
+          
+          <button class="btn-danger-action critical" onclick="window.deleteAccount()">
+            <div class="danger-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+            </div>
+            <div class="danger-text">
+              <span class="d-title" data-i18n="set_delete">Elimina Account Supabase</span>
+              <span class="d-sub" data-i18n="set_delete_sub">Cancellazione definitiva dal cloud (Irreversibile)</span>
+            </div>
+          </button>
+
+          <button class="btn-danger-action critical" onclick="window.logout()" style="border-color:color-mix(in srgb, var(--text) 20%, transparent); color:var(--text);">
+            <div class="danger-icon" style="color:var(--text);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+            </div>
+            <div class="danger-text">
+              <span class="d-title">Esci dal Profilo</span>
+              <span class="d-sub">Disconnettiti ed entra come ospite</span>
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -574,9 +571,9 @@
 <!-- MODAL LEADERBOARD -->
 <div class="overlay" id="modal-leaderboard" role="dialog" aria-modal="true" aria-labelledby="lb-title">
   <div class="modal glass-modal" style="max-width:600px;">
-    <button class="modal-close" onclick="window.closeModal('leaderboard')" aria-label="Chiudi Classifica">×</button>
     <div class="modal-header">
-      <h2 id="lb-title" data-i18n="lb_title">CLASSIFICA DI ATENEO</h2>
+      <h2 id="lb-title" data-i18n="lb_title" style="margin:0;">CLASSIFICA DI ATENEO</h2>
+      <button class="modal-close" onclick="window.closeModal('leaderboard')" aria-label="Chiudi Classifica">×</button>
     </div>
     <div class="modal-body" style="padding:1rem;">
       <div class="tabs" style="display:flex; border-bottom:1px solid rgba(255,255,255,0.1); margin-bottom:1rem;">
@@ -596,9 +593,9 @@
 <!-- MODAL PRIVACY -->
 <div class="overlay" id="modal-privacy" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
   <div class="modal glass-modal" style="max-width:600px;">
-    <button class="modal-close" onclick="window.closeModal('privacy')" aria-label="Chiudi Privacy">×</button>
     <div class="modal-header">
-      <h2 id="privacy-title">PRIVACY & COOKIE POLICY</h2>
+      <h2 id="privacy-title" style="margin:0;">PRIVACY & COOKIE POLICY</h2>
+      <button class="modal-close" onclick="window.closeModal('privacy')" aria-label="Chiudi Privacy">×</button>
     </div>
     <div class="modal-body" style="padding:2rem; color:var(--text); text-align:left; font-size:0.9rem; line-height:1.5;">
       <h3 style="color:var(--volt); margin-bottom:0.5rem;">1. Cookie Tecnici e Salvataggio Dati</h3>

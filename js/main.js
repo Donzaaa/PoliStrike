@@ -1,5 +1,5 @@
 import { checkSession, loginWithGoogle, loginAsGuest } from './auth.js';
-import { initState, updateBalance, getState, resetGameCompletely } from './state.js';
+import { initState, updateBalance, getState, resetGameCompletely, setProfile } from './state.js';
 import { checkDailyBonus, claimDailyBonus, checkLoan, takeLoan, getNetWorth } from './economy.js';
 import { updateGlobalUI, initTicker, setupModals, openModal, closeModal, setCurrentGame } from './ui.js';
 import { initBlackjack } from './games/blackjack.js';
@@ -23,11 +23,17 @@ window.appLoginGuest = () => loginAsGuest(() => {
 function hideFeaturesForGuest() {
   const lbBtn = document.getElementById('nav-leaderboard');
   const profBtn = document.getElementById('nav-profile');
-  const dangerZone = document.querySelector('.settings-danger-zone');
+  const dangerZone = document.querySelector('.danger-zone');
   
   if (lbBtn) lbBtn.style.display = 'none';
-  if (profBtn) profBtn.style.display = 'none';
   if (dangerZone) dangerZone.style.display = 'none';
+  if (profBtn) {
+    profBtn.textContent = 'Accedi';
+    profBtn.onclick = () => {
+      const modalAuth = document.getElementById('modal-auth');
+      if (modalAuth) modalAuth.style.display = 'flex';
+    };
+  }
 }
 
 // Setup global functions for UI calls
@@ -179,6 +185,11 @@ window.deleteAccount = async () => {
   }
 };
 
+window.logout = async () => {
+  const { logout } = await import('./auth.js');
+  await logout();
+};
+
 window.syncScore = async () => {
   const state = getState();
   if (!state.profile.nickname || !state.profile.course) {
@@ -211,11 +222,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // onGuest
     () => { hideFeaturesForGuest(); },
     // onLogged
-    (user) => { /* All features enabled */ },
+    async (user) => {
+      const state = getState();
+      if (!state.profile.nickname) {
+        try {
+          const { getSupabase } = await import('./supabase.js');
+          const supabase = await getSupabase();
+          if (supabase && user && user.id) {
+            let res = await supabase.from('leaderboard').select('nickname, course, instagram').eq('auth_uid', user.id).maybeSingle();
+            if (!res.data && !res.error) {
+              res = await supabase.from('leaderboard').select('nickname, course, instagram').eq('user_id', user.id).maybeSingle();
+            }
+            if (res.data && res.data.nickname) {
+              setProfile(res.data.nickname, res.data.course, res.data.instagram);
+            }
+          }
+        } catch (e) {
+          console.warn("Impossibile caricare il profilo da Supabase", e);
+        }
+      }
+    },
     // onShowLogin
     () => {
-      const modalAuth = document.getElementById('modal-auth');
-      if (modalAuth) modalAuth.style.display = 'flex';
+      openModal('auth');
     }
   );
   
