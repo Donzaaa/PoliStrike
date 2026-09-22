@@ -28,6 +28,9 @@ export async function loginWithGoogle() {
   if (supabase) {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
+      options: {
+        redirectTo: window.location.origin
+      }
     });
     if (error) {
       alert("Errore login Google: " + error.message);
