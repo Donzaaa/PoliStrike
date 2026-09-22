@@ -159,3 +159,18 @@ select option {
 .danger-text { display: flex; flex-direction: column; }
 .d-title { font-family: 'Barlow Condensed'; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.5px; text-transform: uppercase; }
 .d-sub { font-size: 0.8rem; color: var(--muted); }
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+========================================= */
+@media (max-width: 768px) {
+  .bmc-button {
+    bottom: 120px; /* Above the credits bar on mobile */
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .theme-grid {
+    grid-template-columns: 1fr;
+  }
+}
