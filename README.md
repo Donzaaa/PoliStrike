@@ -1,10 +1,10 @@
-# PoliStrike 🎓🎰
+# PoliStrike 🎓
 
 Benvenuto su **PoliStrike**, il simulatore di casinò definitivo pensato esclusivamente per gli studenti universitari (e non solo)! Sfida la sorte, accumula CFU virtuali e scala la classifica del tuo ateneo per dimostrare chi è il vero re del banco.
 
 ---
 
-## ⚠️ SCARICO DI RESPONSABILITÀ (DISCLAIMER) ⚠️
+## DISCLAIMER 
 
 **LEGGERE ATTENTAMENTE PRIMA DI GIOCARE:**
 
@@ -19,7 +19,7 @@ Se tu o qualcuno che conosci avete problemi legati al gioco d'azzardo, vi inviti
 
 ---
 
-## 🎮 Come si Gioca
+## Come si Gioca
 
 Su PoliStrike inizi la tua carriera con un budget iniziale di **1.000 CFU (Crediti Formativi Universitari)**. Il tuo obiettivo è moltiplicarli sfidando la fortuna in vari minigiochi classici e moderni:
 
@@ -30,11 +30,11 @@ Su PoliStrike inizi la tua carriera con un budget iniziale di **1.000 CFU (Credi
 5. **Upgrade:** Una modalità adrenalinica dove scegli un moltiplicatore "target" (es. 2x o 10x). La lancetta gira: se finisce sul verde hai vinto, altrimenti perdi la puntata.
 6. **Mines:** Scegli il numero di bombe (da 1 a 23) e scopri le caselle. Più gemme trovi, più il moltiplicatore sale. Ma attenzione: se trovi una bomba, perdi tutto!
 
-## 🏆 Profilo e Classifica
+## Profilo e Classifica
 - **Salvataggio:** I tuoi CFU vengono salvati sul tuo dispositivo in modo da non perdere i progressi (se non cancelli i dati del browser).
 - **Classifica Globale:** Registra il tuo nickname e la tua facoltà, poi usa il bottone "Invia Punteggio" per apparire nella classifica globale e sfidare i colleghi universitari. Chi sarà il più ricco del Politecnico?
 
-## 💸 Non ho più CFU, cosa faccio?
+## Non ho più CFU, cosa faccio?
 Sei andato in bancarotta? Non preoccuparti:
 - C'è un **Bonus Giornaliero** gratuito che puoi riscattare ogni giorno.
 - Puoi richiedere un **Prestito Studentesco**, ma fai attenzione: i debiti sottrarranno punti preziosi al tuo punteggio totale in classifica!
