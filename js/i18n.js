@@ -6,8 +6,6 @@ const dictionary = {
   nav_roulette: { it: "Roulette", en: "Roulette" },
   nav_slots: { it: "Slot Machine", en: "Slots" },
   nav_crates: { it: "Casse", en: "Crates" },
-  nav_leaderboard: { it: "Classifica", en: "Leaderboard" },
-  nav_profile: { it: "Profilo", en: "Profile" },
   nav_settings: { it: "Impostazioni", en: "Settings" },
   nav_play: { it: "Gioca Ora", en: "Play Now" },
   
@@ -17,24 +15,11 @@ const dictionary = {
   set_theme_mid: { it: "Midnight", en: "Midnight" },
   set_danger: { it: "Zona Pericolosa", en: "Danger Zone" },
   set_reset: { it: "Azzera Dati Locali (Ospite)", en: "Reset Local Data (Guest)" },
-  set_delete: { it: "Elimina Account Supabase", en: "Delete Supabase Account" },
   set_theme_desc: { it: "Personalizza l'interfaccia visiva del casinò per la tua sessione.", en: "Customize the casino's visual interface for your session." },
   set_danger_desc: { it: "Azioni irreversibili per il tuo account e i tuoi dati locali.", en: "Irreversible actions for your account and local data." },
   set_reset_sub: { it: "Cancella subito crediti, debiti e statistiche di gioco", en: "Instantly clear credits, debts and game stats" },
-  set_delete_sub: { it: "Cancellazione definitiva dal cloud (Irreversibile)", en: "Permanent deletion from the cloud (Irreversible)" },
   
-  prof_title: { it: "IL TUO PROFILO", en: "YOUR PROFILE" },
-  prof_desc: { it: "Scegli un nickname e il tuo corso di studi per partecipare alla classifica di ateneo.", en: "Choose a nickname and your major to join the university leaderboard." },
-  prof_nick: { it: "NICKNAME (visibile in classifica)", en: "NICKNAME (visible on leaderboard)" },
-  prof_ig: { it: "PROFILO INSTAGRAM (OPZIONALE)", en: "INSTAGRAM PROFILE (OPTIONAL)" },
-  prof_course: { it: "CORSO DI STUDI", en: "MAJOR / COURSE" },
-  prof_save: { it: "Salva Profilo", en: "Save Profile" },
-  
-  lb_title: { it: "CLASSIFICA DI ATENEO", en: "UNIVERSITY LEADERBOARD" },
-  lb_tab_glob: { it: "MIGLIORI STUDENTI", en: "TOP STUDENTS" },
-  lb_tab_course: { it: "MEDIA PER CORSO", en: "AVERAGE BY MAJOR" },
-  lb_submit: { it: "Invia Punteggio in Classifica", en: "Submit Score to Leaderboard" },
-  
+
   support_btn: { it: "Offrimi un Caffè ☕", en: "Buy me a Coffee ☕" },
   
   // Aggiunte di base per l'HUD
@@ -80,9 +65,6 @@ const dictionary = {
   btn_arrow: { it: "Gioca →", en: "Play →" },
   btn_open_arrow: { it: "Apri →", en: "Open →" },
 
-  auth_desc: { it: "Accedi per partecipare alla classifica e personalizzare il tuo profilo, oppure gioca come ospite offline.", en: "Sign in to join the leaderboard and customize your profile, or play offline as a guest." },
-  auth_google: { it: "Accedi con Google", en: "Sign in with Google" },
-  auth_guest: { it: "Continua come Ospite", en: "Continue as Guest" },
 
   modal_cs_title: { it: "📦 CASSE PREMI", en: "📦 CRATES" },
   cs_select: { it: "Seleziona una Cassa", en: "Select a Crate" },

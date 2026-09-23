@@ -84,10 +84,7 @@ export const CONFIG = {
     heroSub: "Blackjack · Roulette · Slot Machine · Casse Premi · Solo Per Divertimento",
     brandName: "PoliStrike"
   },
-  supabase: {
-    url: "https://husgpiqyibfibvumkhhw.supabase.co", // Insert Supabase URL here
-    anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh1c2dwaXF5aWJmaWJ2dW1raGh3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAwMTAzMjAsImV4cCI6MjEwNTU4NjMyMH0.35piF3dw9l-jhc2_Q_itcMpwWRaqZPiGYcCaNA-q4-8" // Insert Supabase Anon Key here
-  },
+
   analytics: {
     enabled: false,
     id: "" // GoatCounter / Umami / Plausible ID

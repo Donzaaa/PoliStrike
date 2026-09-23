@@ -373,6 +373,10 @@ nav {
   font-family: 'Bebas Neue';
   font-size: 2.2rem;
   letter-spacing: .05em;
+  color: var(--volt);
+}
+
+.stat-num.gradient {
   background: linear-gradient(90deg, var(--volt), var(--cyan));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

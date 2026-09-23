@@ -3,8 +3,8 @@ import { CONFIG } from './config.js';
 
 export async function shareResult(title, message, scoreOrValue) {
   const state = getState();
-  const nickname = state.profile.nickname || 'Studente Anonimo';
-  const course = state.profile.course || 'Politecnico';
+  const nickname = 'Giocatore';
+  const course = 'Politecnico';
   
   // Create sharing image via Canvas
   const canvas = document.createElement('canvas');

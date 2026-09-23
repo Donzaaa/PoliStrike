@@ -20,14 +20,7 @@ const DEFAULT_STATE = {
       rw: 0,
       sl: 0,
       cs: 0
-    }
-  },
-  profile: {
-    nickname: null,
-    course: null,
-    instagram: null
-  },
-  isGuest: false
+  }
 };
 
 let state = { ...DEFAULT_STATE };
@@ -66,7 +59,7 @@ export function initState() {
       }
       
       // Merge with default state to ensure all fields exist
-      state = { ...DEFAULT_STATE, ...dataToLoad, stats: { ...DEFAULT_STATE.stats, ...(dataToLoad.stats || {}) }, profile: { ...DEFAULT_STATE.profile, ...(dataToLoad.profile || {}) } };
+      state = { ...DEFAULT_STATE, ...dataToLoad, stats: { ...DEFAULT_STATE.stats, ...(dataToLoad.stats || {}) } };
       
       // Migration logic if needed in the future
       if (!state.stats.gamesPlayed) {
@@ -135,20 +128,9 @@ export function addHand(gameId) {
   saveState();
 }
 
-export function setProfile(nickname, course, instagram = '') {
-  state.profile.nickname = nickname;
-  state.profile.course = course;
-  state.profile.instagram = instagram;
-  saveState();
-}
-
 export function resetGameCompletely() {
   state = { ...DEFAULT_STATE };
   saveState();
   window.location.reload();
 }
 
-export function setGuestMode(isGuest) {
-  state.isGuest = isGuest;
-  saveState();
-}
