@@ -32,7 +32,11 @@
     <div class="logo-text brand-name">POLI STRIKE</div>
     <div class="logo-sub" data-i18n="brand_sub">Casino Digitale</div>
   </div>
-  <nav>
+  <button id="mobile-menu-toggle" aria-label="Menu" class="mobile-menu-btn" onclick="window.toggleMobileMenu()">
+    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay" onclick="window.toggleMobileMenu()"></div>
+  <nav id="main-nav">
     <button aria-label="Gioca a Blackjack" class="nav-link active" onclick="openGame('bj')" data-i18n="nav_blackjack">Blackjack</button>
     <button aria-label="Gioca alla Roulette" class="nav-link" onclick="openGame('rw')" data-i18n="nav_roulette">Roulette</button>
     <button aria-label="Gioca alle Slot Machine" class="nav-link" onclick="openGame('sl')" data-i18n="nav_slots">Slot Machine</button>

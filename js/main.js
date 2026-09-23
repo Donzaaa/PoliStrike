@@ -22,7 +22,22 @@ window.openGame = (g) => {
     buildCasesUI();
     window.csSetCasePrice(10);
   }
+  closeMobileMenu();
 };
+
+window.toggleMobileMenu = () => {
+  const nav = document.getElementById('main-nav');
+  const overlay = document.getElementById('mobile-menu-overlay');
+  if (nav) nav.classList.toggle('active');
+  if (overlay) overlay.classList.toggle('active');
+};
+
+function closeMobileMenu() {
+  const nav = document.getElementById('main-nav');
+  const overlay = document.getElementById('mobile-menu-overlay');
+  if (nav) nav.classList.remove('active');
+  if (overlay) overlay.classList.remove('active');
+}
 
 window.closeModal = closeModal;
 
@@ -73,6 +88,7 @@ window.resetEverything = () => {
 
 window.openSettings = () => {
   openModal('settings');
+  closeMobileMenu();
 };
 
 window.openPrivacy = () => {
