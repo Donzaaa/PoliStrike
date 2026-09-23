@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Aggiunta Content Security Policy -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://flagcdn.com https://*.supabase.co; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://flagcdn.com; connect-src 'self' https://*.supabase.co;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://flagcdn.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://flagcdn.com; connect-src 'self';">
 <title>POLI STRIKE</title>
 
 <meta name="theme-color" content="#CCFF00">
@@ -37,8 +37,8 @@
     <button aria-label="Gioca alla Roulette" class="nav-link" onclick="openGame('rw')" data-i18n="nav_roulette">Roulette</button>
     <button aria-label="Gioca alle Slot Machine" class="nav-link" onclick="openGame('sl')" data-i18n="nav_slots">Slot Machine</button>
     <button aria-label="Apri le Casse" class="nav-link" onclick="openGame('cs')" style="color:#E040FB" data-i18n="nav_crates">Casse</button>
-    <button aria-label="Vedi Classifica" class="nav-link" id="nav-leaderboard" onclick="window.openLeaderboard()" style="color:var(--volt)" data-i18n="nav_leaderboard">Classifica</button>
-    <button aria-label="Apri Profilo" class="nav-link" id="nav-profile" onclick="window.openProfile()" data-i18n="nav_profile">Profilo</button>
+    <button aria-label="Impostazioni" class="nav-link" id="nav-settings" onclick="window.openSettings()" data-i18n="nav_settings">Impostazioni</button>
+
     <button aria-label="Cambia Lingua" class="nav-link" id="lang-toggle-btn" onclick="window.toggleLang()" style="margin-left: 1rem; border: none; background: transparent; padding: 0; display: flex; align-items: center; justify-content: center;"><img src="https://flagcdn.com/w40/gb.png" width="32" alt="Cambia Lingua" style="border-radius:4px"></button>
   </nav>
 </header>
@@ -125,23 +125,6 @@
   </div>
 </section>
 </main>
-
-<!-- ═══ AUTH MODAL ═══ -->
-<div class="overlay" id="modal-auth" style="z-index:9999; backdrop-filter: blur(10px);" role="dialog" aria-modal="true" aria-labelledby="auth-title">
-  <div class="modal glass-modal" style="max-width:400px; text-align:center;">
-    <div class="modal-header" style="justify-content:center;">
-      <div class="modal-title" id="auth-title" style="font-size:2rem; letter-spacing:0.1em; color:var(--volt);">POLI STRIKE</div>
-    </div>
-    <div class="modal-body" style="padding:2rem;">
-      <p style="color:var(--muted); margin-bottom:2rem;" data-i18n="auth_desc">Accedi per partecipare alla classifica e personalizzare il tuo profilo, oppure gioca come ospite offline.</p>
-      <button class="btn-primary" style="background:var(--text); color:#000; width:100%; margin-bottom:1rem; font-weight:bold; display:flex; justify-content:center; align-items:center; gap:0.5rem;" onclick="window.appLoginGoogle()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z"/></svg>
-        <span data-i18n="auth_google">Accedi con Google</span>
-      </button>
-      <button class="btn-outline" style="width:100%; color:var(--text); border-color:rgba(255,255,255,0.2);" onclick="window.appLoginGuest()" data-i18n="auth_guest">Continua come Ospite</button>
-    </div>
-  </div>
-</div>
 
 
 
@@ -465,45 +448,14 @@
   </div>
 </div>
 
-<!-- MODAL PROFILE -->
-<div class="overlay" id="modal-profile" role="dialog" aria-modal="true" aria-labelledby="profile-title">
+<!-- MODAL SETTINGS -->
+<div class="overlay" id="modal-settings" role="dialog" aria-modal="true" aria-labelledby="settings-title">
   <div class="modal glass-modal">
     <div class="modal-header">
-      <h2 id="profile-title" data-i18n="prof_title" style="margin:0;">IL TUO PROFILO</h2>
-      <button class="modal-close" onclick="window.closeModal('profile')" aria-label="Chiudi Profilo">×</button>
+      <h2 id="settings-title" data-i18n="nav_settings" style="margin:0;">IMPOSTAZIONI</h2>
+      <button class="modal-close" onclick="window.closeModal('settings')" aria-label="Chiudi Impostazioni">×</button>
     </div>
     <div class="modal-body" style="padding:2rem;">
-      <p style="margin-bottom:1rem; color:var(--muted)" data-i18n="prof_desc">Scegli un nickname e il tuo corso di studi per partecipare alla classifica di ateneo.</p>
-      
-      <div style="margin-bottom:1.5rem">
-        <label class="premium-label" data-i18n="prof_nick">NICKNAME (visibile in classifica)</label>
-        <input type="text" id="prof-nickname" class="premium-input" placeholder="MarioRossi">
-      </div>
-      
-      <div style="margin-bottom:1.5rem">
-        <label class="premium-label" data-i18n="prof_ig">PROFILO INSTAGRAM (OPZIONALE)</label>
-        <input type="text" id="prof-ig" class="premium-input" placeholder="TuoNomeIG">
-      </div>
-      
-      <div style="margin-bottom:2rem">
-        <label class="premium-label" data-i18n="prof_course">CORSO DI STUDI</label>
-        <select id="prof-course" class="premium-input" style="appearance:none;">
-          <!-- Popolato dinamicamente -->
-        </select>
-      </div>
-      
-      <div style="margin-bottom:2rem; display:flex; align-items:flex-start; gap:0.5rem; text-align:left;">
-        <input type="checkbox" id="prof-consent" style="margin-top:0.3rem;">
-        <label for="prof-consent" style="color:var(--muted); font-size:0.8rem; line-height:1.2;">Acconsento al trattamento dei miei dati per la classifica. <a href="#" onclick="window.openPrivacy()" style="color:var(--volt); text-decoration:none;">Leggi la Privacy Policy</a>.</label>
-      </div>
-      
-      <div style="text-align:right; margin-bottom:2rem;">
-        <span id="prof-msg" style="margin-right:1rem;"></span>
-        <button class="btn-primary" onclick="window.saveProfile()" data-i18n="prof_save">Salva Profilo</button>
-      </div>
-
-      <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin-bottom:2rem;">
-
       <div class="settings-section">
         <h3 class="settings-subtitle" data-i18n="set_theme">TEMA E ASPETTO</h3>
         <p class="settings-desc" data-i18n="set_theme_desc">Personalizza l'interfaccia visiva del casinò per la tua sessione.</p>
@@ -543,47 +495,8 @@
             </div>
           </button>
           
-          <button class="btn-danger-action critical" onclick="window.deleteAccount()">
-            <div class="danger-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-            </div>
-            <div class="danger-text">
-              <span class="d-title" data-i18n="set_delete">Elimina Account Supabase</span>
-              <span class="d-sub" data-i18n="set_delete_sub">Cancellazione definitiva dal cloud (Irreversibile)</span>
-            </div>
-          </button>
 
-          <button class="btn-danger-action critical" onclick="window.logout()" style="border-color:color-mix(in srgb, var(--text) 20%, transparent); color:var(--text);">
-            <div class="danger-icon" style="color:var(--text);">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-            </div>
-            <div class="danger-text">
-              <span class="d-title">Esci dal Profilo</span>
-              <span class="d-sub">Disconnettiti ed entra come ospite</span>
-            </div>
-          </button>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL LEADERBOARD -->
-<div class="overlay" id="modal-leaderboard" role="dialog" aria-modal="true" aria-labelledby="lb-title">
-  <div class="modal glass-modal" style="max-width:600px;">
-    <div class="modal-header">
-      <h2 id="lb-title" data-i18n="lb_title" style="margin:0;">CLASSIFICA DI ATENEO</h2>
-      <button class="modal-close" onclick="window.closeModal('leaderboard')" aria-label="Chiudi Classifica">×</button>
-    </div>
-    <div class="modal-body" style="padding:1rem;">
-      <div class="tabs" style="display:flex; border-bottom:1px solid rgba(255,255,255,0.1); margin-bottom:1rem;">
-        <button class="tab-btn active" id="tab-global" onclick="window.switchLeaderboardTab('global')" data-i18n="lb_tab_glob">MIGLIORI STUDENTI</button>
-        <button class="tab-btn" id="tab-course" onclick="window.switchLeaderboardTab('course')" data-i18n="lb_tab_course">MEDIA PER CORSO</button>
-      </div>
-      <div id="leaderboard-list" style="max-height:400px; overflow-y:auto; margin-bottom:1rem;"></div>
-      <div style="text-align:center">
-        <button class="btn-primary" style="width:100%" onclick="window.syncScore()" data-i18n="lb_submit">Invia Punteggio in Classifica</button>
-        <div id="lb-msg" style="margin-top:0.5rem; font-size:0.9rem;"></div>
       </div>
     </div>
   </div>
@@ -604,8 +517,6 @@
       <h3 style="color:var(--volt); margin-bottom:0.5rem;">2. Tracciamento Analitico</h3>
       <p style="margin-bottom:1rem; color:var(--muted);">Se accetti il tracciamento dal banner, il sito attiverà script di misurazione (es. pagine visitate). Se lo rifiuti, queste statistiche non verranno inviate.</p>
       
-      <h3 style="color:var(--volt); margin-bottom:0.5rem;">3. Classifica e Supabase</h3>
-      <p style="margin-bottom:1rem; color:var(--muted);">Se decidi di partecipare alla classifica (salvando un profilo), il tuo nickname, il corso di studi e il tuo saldo verranno inviati al nostro database (Supabase) per essere visibili agli altri giocatori. Puoi sempre eliminare il tuo account dalla sezione "Impostazioni".</p>
       
       <div style="text-align:center; margin-top:2rem;">
         <button class="btn-primary" onclick="window.closeModal('privacy')">Ho capito</button>
