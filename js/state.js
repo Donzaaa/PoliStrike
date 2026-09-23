@@ -20,6 +20,7 @@ const DEFAULT_STATE = {
       rw: 0,
       sl: 0,
       cs: 0
+    }
   }
 };
 
