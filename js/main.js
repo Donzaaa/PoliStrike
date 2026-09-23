@@ -9,7 +9,6 @@ import { initCrates, buildCasesUI } from './games/crates.js';
 import { initCrash } from './games/crash.js';
 import { initMines } from './games/mines.js';
 import { CONFIG } from './config.js';
-import { initAnalytics } from './analytics.js';
 import { initResponsibleGaming } from './responsible.js';
 
 // Setup auth global functions
@@ -282,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   
   // Init Modules
-  initAnalytics();
+  import('./analytics.js').then(m => m.initAnalytics()).catch(e => console.warn("Analytics blocked"));
   initResponsibleGaming();
   
   // Init Games
