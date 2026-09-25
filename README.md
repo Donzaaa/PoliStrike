@@ -13,7 +13,7 @@ Questo progetto è stato creato a scopo puramente goliardico, di intrattenimento
 
 - **NESSUN SOLDO REALE:** Sulla piattaforma si utilizzano ESCLUSIVAMENTE valute virtuali finte (chiamate **CFU**). Non è possibile in alcun modo depositare, scommettere, vincere o prelevare denaro reale.
 - **NESSUN INCITAMENTO AL GIOCO D'AZZARDO:** Questo sito non promuove, non incoraggia e non supporta il gioco d'azzardo reale in nessuna forma. Il gioco d'azzardo può causare dipendenza patologica. 
-- **SOLO PER DIVERTIMENTO:** Qualsiasi "vincita" o "perdita" su PoliStrike non ha alcun valore nel mondo reale. I punteggi servono solo per la classifica virtuale tra amici.
+- **SOLO PER DIVERTIMENTO:** Qualsiasi "vincita" o "perdita" su PoliStrike non ha alcun valore nel mondo reale. 
 
 Se tu o qualcuno che conosci avete problemi legati al gioco d'azzardo, vi invitiamo a contattare i servizi preposti (es. il Numero Verde Nazionale 800 558822 in Italia).
 
@@ -30,9 +30,6 @@ Su PoliStrike inizi la tua carriera con un budget iniziale di **1.000 CFU (Credi
 5. **Upgrade:** Una modalità adrenalinica dove scegli un moltiplicatore "target" (es. 2x o 10x). La lancetta gira: se finisce sul verde hai vinto, altrimenti perdi la puntata.
 6. **Mines:** Scegli il numero di bombe (da 1 a 23) e scopri le caselle. Più gemme trovi, più il moltiplicatore sale. Ma attenzione: se trovi una bomba, perdi tutto!
 
-## Profilo e Classifica
-- **Salvataggio:** I tuoi CFU vengono salvati sul tuo dispositivo in modo da non perdere i progressi (se non cancelli i dati del browser).
-- **Classifica Globale:** Registra il tuo nickname e la tua facoltà, poi usa il bottone "Invia Punteggio" per apparire nella classifica globale e sfidare i colleghi universitari. Chi sarà il più ricco del Politecnico?
 
 ## Non ho più CFU, cosa faccio?
 Sei andato in bancarotta? Non preoccuparti:
